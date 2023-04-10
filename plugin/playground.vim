@@ -8,8 +8,8 @@ let g:playground_settings = extend({
 				\ 'main.go': ["package main","","import (","\t\"fmt\"",")","","func main() {","\tfmt.Println(\"hello world\")", "}"]
 			\ }
 		\ }
-	\ }
-	\ }, get(g:, 'playground_settings', {})
+	\ },
+	\ }, get(g:, 'playground_settings', {}))
 
 if !g:playground_settings['no_cmd']
 	command! -complete=customlist,playground#args_complete -nargs=+ PlayGround call playground#start(<f-args>)

@@ -34,7 +34,7 @@ endfunction
 function playground#start(language, ...) abort
 	let has_templates_dir = 0
 	if strlen(g:playground_settings['templates_directory']) > 0
-		let templates_dir = g:playground_settings['templates_directory'].s:sep.a:language
+		let templates_dir = expand(g:playground_settings['templates_directory']).s:sep.a:language
 		if isdirectory(templates_dir)
 			let has_templates_dir = 1
 		endif
@@ -145,7 +145,7 @@ function playground#args_complete_languages(A) abort
 		let languages[language] = 1
 	endfor
 	if len(g:playground_settings['templates_directory']) > 0
-		for file in playground#readdirex(g:playground_settings['templates_directory'])
+		for file in playground#readdirex(expand(g:playground_settings['templates_directory']))
 			if file['type'] == 'dir'
 				let languages[file['name']] = 1
 			endif
